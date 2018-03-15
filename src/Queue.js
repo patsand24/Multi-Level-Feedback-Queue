@@ -60,6 +60,16 @@ class Queue {
     // If it isn't finished, emit a scheduler interrupt notifying the scheduler that this process
     // needs to be moved to a lower priority queue
     manageTimeSlice(currentProcess, time) {
+        if (currentProcess.isStateChanged()) {
+            this.quantumClock = 0;
+            return;
+        }
+
+        this.quantumClock += time;
+
+        if (this.quantumClock > this.quantum) {
+            
+        }
 
     }
 
